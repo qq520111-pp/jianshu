@@ -106,10 +106,10 @@ section {
 
 body {
     margin: 0;
+    font-size: 17px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1;
+    -moz-osx-font-smoothing: grayscale;    line-height: 1.42857;
 }
 
 ol,
@@ -133,4 +133,32 @@ q:after {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+}
+
+.center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    margin: auto;
+}
+
+.p{
+    display: flex;
+}
+
+.p-item{
+    order: 2;
+    width: 25%;
+    border: 1px solid #000;
+}
+
+.p-item1{
+    order: 1;
+}
+
+a{
+    text-decoration: none;
 }
