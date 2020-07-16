@@ -58,8 +58,29 @@
 }
 
 .header-middle-item input::placeholder{
-    color:#aaa;
+    color:#969696;
 }
+
+.searchLogo{
+    position: absolute;
+    top: 0;
+    bottom:0;
+    height: 32px;
+    width: 32px;
+    right: 22px;
+    margin: auto 0;
+    font-size: 18px;
+    text-align: center;
+    line-height: 28px;
+    color:#969696 ;
+    border-radius: 50%;
+}
+
+.header-middle-item .change-inp-wid+.searchLogo{
+    background-color: #969696;
+    color: #f0f0f0;
+}
+
 
 .active{
     color: #ea6f5a;
