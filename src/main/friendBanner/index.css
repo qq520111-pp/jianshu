@@ -1,0 +1,99 @@
+.friend_banner img{
+    display: block;
+    margin-bottom: 10px;
+    width:100%;
+}
+
+.QR_code{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 10px 0 30px;
+    padding: 10px 22px;
+    border: 1px solid #f0f0f0;
+}
+
+.czou{
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.min_erweima img{
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-right: 7px;
+}
+
+.show_max_erweima img{
+    width: 100%;
+}
+
+
+.QR_code .show_max_erweima{
+    position: absolute;
+    bottom: 92px;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 12px;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    margin: 0 auto;
+    width: 180px;
+    height: 180px;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.8;
+}
+
+.QR_code:hover .show_max_erweima{
+    display: block;
+    z-index: 1;
+    opacity: 1;
+}
+
+.show_max_erweima::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    bottom: -20px;
+    border: 10px solid red;
+    margin: 0 auto;
+    border-bottom:  10px solid transparent;
+    border-left:  10px solid transparent;
+    border-right:  10px solid transparent;
+}
+
+.article_list{
+    font-size: 14px;
+}
+
+.article_list_item{
+    position: relative;
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.guangzhu{
+    position: absolute;
+    right: 0;
+}
+
+.article_list_item img{
+    display: block;
+    width:48px;
+    height: 48px;
+    margin-right: 10px;
+    border-radius: 50px;
+}
+
+.refresh{
+    display: inline-block;
+    margin-right: 4px;
+}

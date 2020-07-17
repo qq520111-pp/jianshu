@@ -28,15 +28,15 @@ class Header extends React.Component {
                         <div className='header-right header-font'>
                         </div>
                         <div className='header-middle container'>
-                            <div className='header-middle-item active'>
+                            <div className='header-middle-item active' style={{ paddingLeft: 0 }}>
                                 <span className="iconfont icon-shouye"></span>
-                                <span style={{ marginLeft: '8px' }}>首页</span>
+                                <span className="hiddle-750" style={{ marginLeft: '8px' }}>首页</span>
                             </div>
                             <div className='header-middle-item'>
                                 <span className="iconfont icon-xingzhuang"></span>
-                                <span style={{ marginLeft: '8px' }}>下载app</span>
+                                <span className="hiddle-750" style={{ marginLeft: '8px' }}>下载app</span>
                             </div>
-                            <div className='header-middle-item' style={{position:'relative'}}>
+                            <div className='header-middle-item' style={{ position: 'relative' }}>
                                 <input placeholder='搜索'
                                     className={this.props.wValue}
                                     onFocus={this.props.focus}
@@ -45,6 +45,9 @@ class Header extends React.Component {
                                 ></input>
                                 <span className="iconfont icon-sousuo searchLogo"></span>
                             </div>
+                        </div>
+                        <div className="show-768">
+                            <span className='iconfont icon-gengduoliebiao' style={{ fontSize: '30px' }}></span>
                         </div>
                     </div>
                 </nav>

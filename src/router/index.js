@@ -1,5 +1,7 @@
 import Header from "../header/index";
 import Login from "../login/index.js";
+import MainContent from "../main/index.js";
+
 
 const route = [
     {
@@ -10,6 +12,11 @@ const route = [
     {
         component: Login,
         path: '/sign_in',
+        exact: true
+    },
+    {
+        component: MainContent,
+        path: '/',
         exact: true
     }
 ]
