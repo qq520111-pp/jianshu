@@ -4,9 +4,6 @@ import FriendBanner from "./friendBanner/index";
 import Article from "./article/index";
 
 class MainContent extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     render() {
         return (
             <div className="container index clearFloat">

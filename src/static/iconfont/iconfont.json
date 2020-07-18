@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "169951",
+      "name": "发言2",
+      "font_class": "fayan2",
+      "unicode": "e6ab",
+      "unicode_decimal": 59051
+    },
+    {
+      "icon_id": "815553",
+      "name": "心",
+      "font_class": "xin",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "15602579",
+      "name": "砖石",
+      "font_class": "zhuanshi",
+      "unicode": "e6b7",
+      "unicode_decimal": 59063
+    },
+    {
       "icon_id": "8843671",
       "name": "向右",
       "font_class": "xiangyou",

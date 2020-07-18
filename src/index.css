@@ -53,9 +53,9 @@
 }
 
 .col-xs-16 {
+    box-sizing: border-box;
     float: left;
     width: 66.66667%;
-    background-color: yellow;
 }
 
 .col-xs-offset-1 {
@@ -74,24 +74,27 @@
 }
 
 .rotate-donghua-720 {
-    animation: rotateD 1s linear ;
-    animation-fill-mode:forwards;
+    transition: all 0.5s;
     transform: rotate(0);
 }
 
+/* 
+animation: rotateD 0.5s linear ;
+animation-fill-mode:forwards;
 @keyframes rotateD {
     0%{
         transform: rotate(0);
     }
 
     50%{
-        transform: rotate(360deg);
+        transform: rotate(180deg);
     }
 
     100%{
-        transform: rotate(720deg);
+        transform: rotate(360deg);
     }
-}
+} 
+*/
 
 .max_btn{
     box-sizing: border-box;
@@ -109,7 +112,9 @@
     cursor: pointer;
 }
 
-
+.jsd-meta {
+    color: #ea6f5a!important;
+}
 
 
 

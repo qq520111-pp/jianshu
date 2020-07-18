@@ -1,6 +1,7 @@
 import Header from "../header/index";
 import Login from "../login/index.js";
 import MainContent from "../main/index.js";
+import Footer from "../main/Footer/index.js";
 
 
 const route = [
@@ -16,6 +17,11 @@ const route = [
     },
     {
         component: MainContent,
+        path: '/',
+        exact: true
+    },
+    {
+        component: Footer,
         path: '/',
         exact: true
     }

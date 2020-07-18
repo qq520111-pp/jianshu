@@ -10,6 +10,7 @@ class FriendBanner extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            count: 0,
             list: [{
                 img: '',
                 author_name: '哈哈哈大帅比',
@@ -38,6 +39,16 @@ class FriendBanner extends React.Component {
             }]
         }
     }
+
+    onbrush(e) {
+        var num = this.state.count += 1;
+        this.setState({
+            count: num
+        })
+        this.ele.style.transform = `rotate(${this.state.count * 360}deg)`;
+
+    }
+
     render() {
         return (
             <div className="col-xs-7 col-xs-offset-1">
@@ -72,16 +83,16 @@ class FriendBanner extends React.Component {
                         <div style={{ float: 'left' }}>
                             推荐作者
                         </div>
-                        <a href="#" className='refresh_active' style={{ float: 'right', color: '#969696' }}>
-                            <span className="iconfont icon-shuaxin refresh rotate-donghua-720"></span>
-                            换一批
+                        <a href="#" className='refresh_active' style={{ float: 'right', color: '#969696' }} onClick={(e) => (this.onbrush(e))}>
+                            <span className="iconfont icon-shuaxin refresh rotate-donghua-720" ref={(ref) => { this.ele = ref }}></span>
+                            <span>换一批</span>
                         </a>
                     </div>
                     <div className='article_list'>
                         {
-                            this.state.list.map(item => {
+                            this.state.list.map((item, index) => {
                                 return (
-                                    <div className='article_list_item'>
+                                    <div className='author_list_item' key={index}>
                                         <div className='shou'>
                                             <img src={erweima} ></img>
                                         </div>
@@ -91,7 +102,7 @@ class FriendBanner extends React.Component {
                                                 写了{item.wenzi}k字 · {item.fangwen}k喜欢
                                             </p>
                                         </div>
-                                        <div className='guangzhu' style={{ color: '#42c02e', fontSize: '13px', alignSelf: 'flex-start', marginTop: '2px' }}>
+                                        <div className='shou guangzhu' style={{ color: '#42c02e', fontSize: '13px', alignSelf: 'flex-start', marginTop: '2px' }}>
                                             + 关注
                                         </div>
                                     </div>
@@ -107,5 +118,4 @@ class FriendBanner extends React.Component {
         );
     }
 }
-
-export default FriendBanner;
+export default FriendBanner

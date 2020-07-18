@@ -3,7 +3,6 @@ import { HashRouter, Route } from "react-router-dom";
 import store from "./store/index";
 import { Provider } from "react-redux";
 import routes from "./router/index";
-console.log(store.getState());
 
 class App extends React.Component {
     constructor(props) {
