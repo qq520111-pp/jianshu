@@ -2,6 +2,7 @@ import React from 'react';
 import './index.css'
 import Swiper from 'swiper/swiper-bundle.min.js'
 import 'swiper/swiper-bundle.min.css'
+import axios from "axios";
 import img from "../../static/421ec96ccef8aea708c84ba2972b5be484695f25.png";
 import img1 from "../../static/f35f847410c2d919aee3f40701e6c2e8d234661e.jpg";
 
@@ -104,6 +105,12 @@ class Article extends React.Component {
             list
         })
 
+    }
+
+    componentWillMount() {
+        // axios.get('http://localhost:8853').then(res => {
+        //     console.log(res.data);
+        // })
     }
 
     componentDidMount() {
