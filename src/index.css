@@ -50,6 +50,9 @@
         display:block !important;
     }
 
+    .login_logo{
+        display: none;
+    }
 }
 
 .col-xs-16 {

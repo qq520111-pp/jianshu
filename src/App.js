@@ -21,9 +21,7 @@ class App extends React.Component {
                                 exact={exact}
                                 path={item.path}
                                 key={index}
-                                render={(props) => {
-                                    return <item.component></item.component>
-                                }}
+                                component={item.component}
                             >
                             </Route>)
                         })}

@@ -12,7 +12,7 @@ const route = [
     },
     {
         component: Login,
-        path: '/sign_in',
+        path: '/:sign_in',
         exact: true
     },
     {
