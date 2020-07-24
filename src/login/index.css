@@ -64,7 +64,7 @@
     color: #969696;
 }
 
-.user_input input{
+.user_input .input{
     box-sizing: border-box;
     border: none;
     outline: none;

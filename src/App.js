@@ -3,6 +3,7 @@ import { HashRouter, Route } from "react-router-dom";
 import store from "./store/index";
 import { Provider } from "react-redux";
 import routes from "./router/index";
+import 'antd/dist/antd.css';
 
 class App extends React.Component {
     constructor(props) {

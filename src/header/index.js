@@ -5,7 +5,19 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class Header extends React.Component {
+
     render() {
+        var login = <Link className='header-right header-login' to='/sign_in'>登录 </Link>;
+        var reg = <Link className='header-right header-register' to='/sign_up'>  注册 </Link>;
+        var user = null;
+        var user_msg = JSON.parse(localStorage.getItem('user_msg'));
+        console.log(user_msg);
+
+        if ( user_msg) {
+            login = null
+            reg = null
+            user = <div className='header-right user_name'>{user_msg.user_name}</div>
+        }
         return (
             <nav className="bott-b navbar">
                 <div className="header">
@@ -16,12 +28,9 @@ class Header extends React.Component {
                         <span className='iconfont icon-combinedshapecopy2'></span>
                         <span>写文章</span>
                     </div>
-                    <Link className='header-right header-register' to='/sign_in'>
-                        注册
-                        </Link>
-                    <Link className='header-right header-login' to='/sign_in'>
-                        登录
-                        </Link>
+                    {reg}
+                    {login}
+                    {user}
                     <div className='header-right header-banner'>
                     </div>
                     <div className='header-right header-font'>
@@ -58,6 +67,7 @@ var mapStateToProps = function (state) {
     return {
         value: state.search.value,
         wValue: state.search.wValue,
+        user: state.user_inif
     }
 }
 var mapDispatchToProps = function (dispatch) {

@@ -72,6 +72,11 @@
     border-radius: 50%;
 }
 
+.user_name{
+    padding: 0 30px;
+    line-height: 56px;
+}
+
 .header-middle-item .change-inp-wid+.searchLogo{
     background-color: #969696;
     color: #f0f0f0;

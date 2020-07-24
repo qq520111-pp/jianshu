@@ -24,6 +24,7 @@ app.all('*', function (req, res, next) {
 
 app.post('/', route.index)
 app.post('/register', route.register)
+app.post('/login', route.login)
 
 
 app.listen(8853, function () {

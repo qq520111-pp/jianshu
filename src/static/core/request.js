@@ -12,7 +12,7 @@ function http(obj) {
         axios({
             method: obj.method || 'get',
             url: obj.url,
-            data: obj.data,
+            data: obj.data || {},
         }).then(res => {
             resolve(res)
         }).catch(rej => {
