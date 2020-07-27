@@ -1,8 +1,10 @@
 import React from 'react';
 import '../static/iconfont/iconfont.css'
 import './index.css';
+import HistoryList from "../main/historyList/historylist";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { List } from 'antd';
 
 class Header extends React.Component {
 
@@ -11,13 +13,13 @@ class Header extends React.Component {
         var reg = <Link className='header-right header-register' to='/sign_up'>  注册 </Link>;
         var user = null;
         var user_msg = JSON.parse(localStorage.getItem('user_msg'));
-        console.log(user_msg);
 
-        if ( user_msg) {
+        if (user_msg) {
             login = null
             reg = null
             user = <div className='header-right user_name'>{user_msg.user_name}</div>
         }
+
         return (
             <nav className="bott-b navbar">
                 <div className="header">
@@ -48,10 +50,11 @@ class Header extends React.Component {
                             <input placeholder='搜索'
                                 className={this.props.wValue}
                                 onFocus={this.props.focus}
-                                onBlur={this.props.blur}
+                                onBlur={this.props.blur.bind(this)}
                                 onInput={this.props.onChange}
                             ></input>
-                            <span className="iconfont icon-sousuo searchLogo"></span>
+                            <span className="iconfont icon-sousuo searchLogo" onMouseDown={this.props.schear.bind(this)}></span>
+                            <HistoryList isHistoryShow={this.props.isHistoryShow} ></HistoryList>
                         </div>
                     </div>
                     <div className="show-768">
@@ -67,22 +70,27 @@ var mapStateToProps = function (state) {
     return {
         value: state.search.value,
         wValue: state.search.wValue,
+        isHistoryShow: state.search.isHistoryShow,
         user: state.user_inif
     }
 }
 var mapDispatchToProps = function (dispatch) {
     return {
         focus(e) {
+            // search-history
+
             var action = {
                 type: 'change_input_width',
-                wValue: 'change-inp-wid'
+                wValue: 'change-inp-wid',
+                isHistoryShow: true
             }
             dispatch(action)
         },
         blur(e) {
             var action = {
                 type: 'change_input_width',
-                wValue: ''
+                wValue: '',
+                isHistoryShow: false
             }
             dispatch(action)
         },
@@ -92,6 +100,14 @@ var mapDispatchToProps = function (dispatch) {
                 value: e.target.value
             }
             dispatch(action)
+        },
+        schear() {
+            var data = JSON.parse(localStorage.getItem('searchHistory')) || [];
+            data.push(this.props.value);
+            localStorage.setItem('searchHistory', JSON.stringify(data))
+
+            //拿到值路由跳转
+            return false
         }
     }
 }

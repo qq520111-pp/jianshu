@@ -1,17 +1,20 @@
 let obj = {
     search: {
         wValue: '',
-        value: '123'
+        value: '123',
+        isHistoryShow: false
     },
     user_inif: {
 
-    }
+    },
 }
 
 function reducer(state = obj, action) {
     if (action.type === 'change_input_width') {
         var oldState = JSON.parse(JSON.stringify(state));
         oldState.search.wValue = action.wValue;
+        oldState.search.isHistoryShow = action.isHistoryShow;
+
         return oldState
     }
     if (action.type === 'change_input_value') {

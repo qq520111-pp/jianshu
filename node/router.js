@@ -2,11 +2,15 @@ const article_list = require('./schema/HOMEPAGE.js');
 const user = require('./schema/USER.js');
 
 let index = function (req, res) {
-    var arr = [1, 2, 3, 4, 5, 6];
-    article_list.create({
-        list: [11, 22, 33, 44, 55, 66]
+    var params = req.body;
+
+    var index = params.index || 0;
+    var size = 10;
+
+    article_list.find().limit((index + 1) * size).then(res1 => {
+        var arr = res1.slice(index * size);
+        res.send(arr);
     })
-    res.send(arr);
 }
 
 let register = function (req, res1) {
