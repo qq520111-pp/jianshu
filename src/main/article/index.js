@@ -4,111 +4,44 @@ import Swiper from 'swiper/swiper-bundle.min.js'
 import 'swiper/swiper-bundle.min.css'
 import img from "../../static/421ec96ccef8aea708c84ba2972b5be484695f25.png";
 import img1 from "../../static/f35f847410c2d919aee3f40701e6c2e8d234661e.jpg";
+import { message } from 'antd';
 
 class Article extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            list: [],
+            index: 2
+        }
+        this.articleReq(0);
+    }
+
+    articleReq(index) {
         React.http({
             url: '/',
             method: 'post',
-            data: { index: 0 }
+            data: {
+                index: index
+            }
         }).then(res => {
-            console.log(res.data);
+            if (!res.data.length) {
+                message.error('暂无更多数据!!!')
+                return false
+            }
+            var arr = this.state.list.concat(res.data);
+            this.setState({
+                list: arr
+            })
         })
-        
-        this.state = {
-            list: [{
-                img: '',
-                author_name: '哈哈哈大帅比',
-                wenzi: '1241',
-                fangwen: '245',
-            }, {
-                img: '',
-                author_name: '哈哈哈大帅比',
-                wenzi: '1241',
-                fangwen: '245',
-            }, {
-                img: '',
-                author_name: '哈哈哈大帅比',
-                wenzi: '1241',
-                fangwen: '245',
-            }, {
-                img: '',
-                author_name: '哈哈哈大帅比',
-                wenzi: '1241',
-                fangwen: '245',
-            }, {
-                img: '',
-                author_name: '哈哈哈大帅比',
-                wenzi: '1241',
-                fangwen: '245',
-            }]
-        }
     }
 
     addList() {
-        var arr = this.state.list;
-        var list = arr.concat([{
-            img: '',
-            author_name: '哈哈哈大帅比',
-            wenzi: '1241',
-            fangwen: '245',
-        }, {
-            img: '',
-            author_name: '哈哈哈大帅比',
-            wenzi: '1241',
-            fangwen: '245',
-        }, {
-            img: '',
-            author_name: '哈哈哈大帅比',
-            wenzi: '1241',
-            fangwen: '245',
-        }, {
-            img: '',
-            author_name: '哈哈哈大帅比',
-            wenzi: '1241',
-            fangwen: '245',
-        }, {
-            img: '',
-            author_name: '哈哈哈大帅比',
-            wenzi: '1241',
-            fangwen: '245',
-        }])
-        this.setState({
-            list
-        })
-    }
+        var num = this.state.index;
 
-    getDate() {
-        var arr = this.state.list;
-        var list = arr.concat([{
-            img: '',
-            author_name: '哈哈哈大帅比',
-            wenzi: '1241',
-            fangwen: '245',
-        }, {
-            img: '',
-            author_name: '哈哈哈大帅比',
-            wenzi: '1241',
-            fangwen: '245',
-        }, {
-            img: '',
-            author_name: '哈哈哈大帅比',
-            wenzi: '1241',
-            fangwen: '245',
-        }, {
-            img: '',
-            author_name: '哈哈哈大帅比',
-            wenzi: '1241',
-            fangwen: '245',
-        }, {
-            img: '',
-            author_name: '哈哈哈大帅比',
-            wenzi: '1241',
-            fangwen: '245',
-        }])
+        this.articleReq(num);
+        num++
         this.setState({
-            list
+            index: num
         })
     }
 
@@ -151,7 +84,7 @@ class Article extends React.Component {
             var screenHeight = window.innerHeight;
 
             if (chaHeight - screenHeight <= 0) {
-                this.getDate();
+                this.articleReq(1);
                 window.onscroll = null;
             }
         }
@@ -183,26 +116,26 @@ class Article extends React.Component {
                             return (
                                 <div className='article_list_item' key={index}>
                                     <h2 className='article_list_title'>
-                                        <a href='#'>title</a>
+                                        <a href='#'>{item.title}</a>
                                     </h2>
                                     <div className='article_list_content'>
-                                        杨丽萍徒弟水月和同性女人结婚，上了热搜，也抢了我的眼球。在中国，同性恋可以领证吗？合法吗？啥时可以同性恋结婚了？ 在中国，同性恋是不可以领证的。...
+                                        {item.content}
                                     </div>
                                     <div className='article_list_footer'>
                                         <div className='jsd-meta'>
                                             <span className='iconfont icon-zhuanshi'></span>
-                                            124.2
+                                            {item.zuanshi}
                                         </div>
                                         <div className='shou'>
-                                            author_name
+                                            嘻嘻嘻
                                         </div>
                                         <div className='shou'>
                                             <span className='iconfont icon-fayan2'></span>
-                                            124
+                                            {item.fayang}
                                         </div>
                                         <div>
                                             <span className='iconfont icon-xin'></span>
-                                            114
+                                            {item.guanzhu}
                                         </div>
                                     </div>
                                 </div>

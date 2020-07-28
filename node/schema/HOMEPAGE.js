@@ -6,9 +6,30 @@
  */
 
 var mongoose = require('mongoose');
+var user = require('./USER.js');
 
 var article_list_schema = new mongoose.Schema({
-    list: Array
+    title: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    user_msg: {
+        type: Object,
+        required: true
+    },
+    fayang: {
+        type: Number
+    },
+    guanzhu: {
+        type: Number
+    },
+    zuanshi: {
+        type: Number
+    }
 })
 
 var article_list = mongoose.model('articleList', article_list_schema);

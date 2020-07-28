@@ -7,10 +7,16 @@ class HistoryList extends React.Component {
         super(props)
     }
 
+    deleteItem(index) {
+        var user_msg = JSON.parse(localStorage.getItem('searchHistory'));
+        user_msg.splice(index, 1);
+        localStorage.setItem('searchHistory', JSON.stringify(user_msg));
+    }
+
     render() {
         var user_msg = JSON.parse(localStorage.getItem('searchHistory'));
         var data = user_msg || [];
-        if (!this.props.isHistoryShow && (!data.length)) {
+        if (!this.props.isHistoryShow || (!data.length)) {
             return null
         } else {
             return (
@@ -18,10 +24,10 @@ class HistoryList extends React.Component {
                     <List
                         style={{ width: '216px' }}
                         dataSource={data}
-                        renderItem={item => (
+                        renderItem={(item, ind) => (
                             <List.Item className='history-list-hover'>
-                                <div >{item}</div>
-                                <div className='delete-item'>x</div>
+                                <div>{item}</div>
+                                <div className='delete-item' onMouseDown={(event) => { this.deleteItem(ind) }}>x</div>
                             </List.Item>
                         )}
                     />

@@ -29,6 +29,7 @@
 
 .history-list-hover{
     position: relative;
+    text-indent: 6px;
 }
 
 .history-list-hover:hover{
@@ -41,5 +42,9 @@
     top: 4px;
     font-size: 20px;
     right:8px;
-    
+    display: none;
+}
+
+.history-list-hover:hover .delete-item{
+    display: block;
 }

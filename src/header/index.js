@@ -54,7 +54,7 @@ class Header extends React.Component {
                                 onInput={this.props.onChange}
                             ></input>
                             <span className="iconfont icon-sousuo searchLogo" onMouseDown={this.props.schear.bind(this)}></span>
-                            <HistoryList isHistoryShow={this.props.isHistoryShow} ></HistoryList>
+                            <HistoryList isHistoryShow={this.props.isHistoryShow}></HistoryList>
                         </div>
                     </div>
                     <div className="show-768">
