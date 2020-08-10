@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const route = require('./router.js');
-var bodyParser = require('body-parser');
+const router = require('./router.js');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -22,9 +22,10 @@ app.all('*', function (req, res, next) {
     next();
 })
 
-app.post('/', route.index)
-app.post('/register', route.register)
-app.post('/login', route.login)
+app.post('/', router.index);
+// app.post('/createArticle', router.createArticle)
+app.post('/register', router.register);
+app.post('/login', router.login);
 
 
 app.listen(8853, function () {
