@@ -32,10 +32,10 @@ class Header extends React.Component {
                         <a className='header-logo' href='/'>
 
                         </a>
-                        <div className='header-right header-article'>
+                        <Link to='/createArticle' className='header-right header-article'>
                             <span className='iconfont icon-combinedshapecopy2'></span>
-                            <Link to='/createArticle'>写文章</Link>
-                        </div>
+                            <span>写文章</span>
+                        </Link>
                         {reg}
                         {login}
                         {user}
