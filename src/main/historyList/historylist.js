@@ -3,10 +3,6 @@ import './index.css'
 import { List } from 'antd';
 
 class HistoryList extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     deleteItem(index) {
         var user_msg = JSON.parse(localStorage.getItem('searchHistory'));
         user_msg.splice(index, 1);

@@ -298,3 +298,7 @@ a{
     text-decoration: none;
     color: black;
 }
+
+p{
+    margin: 0;
+}

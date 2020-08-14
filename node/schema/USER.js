@@ -19,6 +19,22 @@ var user_schema = new mongoose.Schema({
     user_pass: {
         type: String,
         required: true
+    },
+    user_article: {
+        type: String,
+        default: '暂无关联'
+    },
+    user_details: {
+        type: String,
+        default: '就这点东西还想有用户详情????'
+    },
+    guanzhu: {
+        type: Number,
+        default: 0
+    },
+    avatar: {
+        type: String,
+        default: '/static/logo192.png'
     }
 })
 

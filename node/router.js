@@ -1,6 +1,7 @@
-const article_list = require('./schema/HOMEPAGE.js');
+const article_list = require('./schema/ARTICLE.js');
 const user = require('./schema/USER.js');
 const crypto = require('crypto');
+const { default: Item } = require('antd/lib/list/Item');
 //加密过程
 function aesEncrypt(data, key = 'Password') {
     const cipher = crypto.createCipher('aes192', key);
@@ -20,7 +21,9 @@ let index = function (req, res) {
     var params = req.body;
     var index = params.index || 0;
     var size = 10;
-    article_list.find().limit((index + 1) * size).then(res1 => {
+    // limit((index + 1) * size)
+    article_list.find().then(res1 => {
+        res1 = res1.reverse();
         var arr = res1.slice(index * size);
         res.send(arr);
     })
@@ -63,13 +66,11 @@ let register = function (req, res1) {
     })
 }
 
-
 let login = function (req, res1) {
     var params = req.body;
     //加密
     var pass = aesEncrypt(params.pass);
     var phone = aesEncrypt(params.phone);
-
     user.find({
         user_phone: phone
     }).then(res => {
@@ -96,34 +97,48 @@ let login = function (req, res1) {
     })
 }
 
-
 let createArticle = function (req, res1) {
     var params = req.body;
-
-    // user.find({
-    //     _id: id
-    // }).then(res => {
-    //     if (res) {
-    //         article_list.create({
-    //             title: '哈哈哈测试数据',
-    //             content: '杨丽萍徒弟水月和同性女人结婚，上了热搜，也抢了我的眼球。在中国，同性恋可以领证吗？合法吗？啥时可以同性恋结婚了？ 在中国，同性恋是不可以领证的。...',
-    //             fayang: 400,
-    //             guanzhu: 102,
-    //             zuanshi: 63,
-    //             user_msg: res[0],
-    //         }).then(res1 => {
-    //             res.send({ msg: '创建成功' });
-    //         })
-    //     } else {
-    //         res.send({ msg: '用户不存在' });
-    //     }
-    // })
+    user.find({
+        _id: params.id
+    }).then(res => {
+        if (res) {
+            article_list.create({
+                title: params.title,
+                content: params.content,
+                fayang: 0,
+                guanzhu: 0,
+                zuanshi: 0,
+                user_msg: res[0],
+            }).then(res => {
+                res1.send({ msg: '创建成功' });
+            })
+        } else {
+            res1.send({ msg: '用户不存在' });
+        }
+    })
 }
 
+let getAuthor = function (req, res1) {
+    user.find({}).then(res => {
+        var filter_user = res.map(Item => {
+            var obj = {
+                user_name: Item.user_name,
+                avatar: Item.avatar,
+                guanzhu: Item.guanzhu
+            }
+            return obj
+        })
+        //随机选内容---代写
 
+        res1.send(filter_user);
+    })
+}
 
 module.exports = {
     index,
     register,
-    login
+    login,
+    createArticle,
+    getAuthor
 }

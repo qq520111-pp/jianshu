@@ -23,9 +23,10 @@ app.all('*', function (req, res, next) {
 })
 
 app.post('/', router.index);
-// app.post('/createArticle', router.createArticle)
+app.post('/createArticle', router.createArticle)
 app.post('/register', router.register);
 app.post('/login', router.login);
+app.get('/getAuthor', router.getAuthor)
 
 
 app.listen(8853, function () {

@@ -45,7 +45,7 @@ export default class Editor extends React.Component {
     render() {
         let { id } = this.state;
         return (<div >
-            <textarea ref='ueditor' id={id} style={{ width: this.props.width, height: this.props.height }}></textarea>
+            <textarea id={id} style={{ width: this.props.width, height: this.props.height }}></textarea>
             <div className='edit-btn'>
                 <Button type="primary" onClick={() => { this.commit() }}>提交</Button>
                 {/* <Button type="primary" onClick={() => { this.clearContent() }}>清空</Button> */}

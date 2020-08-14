@@ -188,6 +188,7 @@ const headerStyle = styled.div`
             transform:translateY(100%);
             background:#eee;
             display:none;
+            z-index:99;
         }
 
         .user_show_hide:hover .user_shop_list{

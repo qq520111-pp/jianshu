@@ -39,7 +39,7 @@ class Article extends React.Component {
         var num = this.state.index;
 
         this.articleReq(num);
-        num++
+        num++;
         this.setState({
             index: num
         })
@@ -97,10 +97,10 @@ class Article extends React.Component {
                     <div className="swiper-container">
                         <div className="swiper-wrapper">
                             <div className="swiper-slide">
-                                <img src={img}></img>
+                                <img src={img} alt='banner_img'></img>
                             </div>
                             <div className="swiper-slide">
-                                <img src={img1}></img>
+                                <img src={img1} alt='banner_img'></img>
                             </div>
                         </div>
 
@@ -113,13 +113,13 @@ class Article extends React.Component {
                 <div className='article_list'>
                     {
                         this.state.list.map((item, index) => {
+                            var result = item.content.replace(/<img/g, `<img style="width: 60px;height:60px;float:right;" alt='article_img'`);
                             return (
                                 <div className='article_list_item' key={index}>
                                     <h2 className='article_list_title'>
-                                        <a href='#'>{item.title}</a>
+                                        <a href='javascript:;'>{item.title}</a>
                                     </h2>
-                                    <div className='article_list_content'>
-                                        {item.content}
+                                    <div className='article_list_content' dangerouslySetInnerHTML={{ __html: result }}>
                                     </div>
                                     <div className='article_list_footer'>
                                         <div className='jsd-meta'>
@@ -127,7 +127,7 @@ class Article extends React.Component {
                                             {item.zuanshi}
                                         </div>
                                         <div className='shou'>
-                                            嘻嘻嘻
+                                            作者名字
                                         </div>
                                         <div className='shou'>
                                             <span className='iconfont icon-fayan2'></span>

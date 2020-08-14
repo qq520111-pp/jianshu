@@ -11,42 +11,34 @@ class FriendBanner extends React.Component {
         super(props)
         this.state = {
             count: 0,
-            list: [{
-                img: '',
-                author_name: '哈哈哈大帅比',
-                wenzi: '1241',
-                fangwen: '245',
-            }, {
-                img: '',
-                author_name: '哈哈哈大帅比',
-                wenzi: '1241',
-                fangwen: '245',
-            }, {
-                img: '',
-                author_name: '哈哈哈大帅比',
-                wenzi: '1241',
-                fangwen: '245',
-            }, {
-                img: '',
-                author_name: '哈哈哈大帅比',
-                wenzi: '1241',
-                fangwen: '245',
-            }, {
-                img: '',
-                author_name: '哈哈哈大帅比',
-                wenzi: '1241',
-                fangwen: '245',
-            }]
+            list: []
         }
     }
 
     onbrush(e) {
-        var num = this.state.count += 1;
+        var num = this.state.count + 1;
         this.setState({
             count: num
         })
         this.ele.style.transform = `rotate(${this.state.count * 360}deg)`;
+        this.req();
+    }
 
+    componentDidMount() {
+        this.req();
+    }
+
+    req() {
+        React.http({
+            url: '/getAuthor'
+        }).then(res => {
+            var arr = res.data.sort(() => {
+                return 0.5 - Math.random()
+            })
+            this.setState({
+                list: arr
+            })
+        })
     }
 
     render() {
@@ -54,28 +46,28 @@ class FriendBanner extends React.Component {
             <div className="col-xs-7 col-xs-offset-1">
                 <div className="friend_banner">
                     <a href="#">
-                        <img src={img1}></img>
+                        <img src={img1} alt='article_img'></img>
                     </a>
                     <a href="#">
-                        <img src={img2}></img>
+                        <img src={img2} alt='article_img'></img>
                     </a>
                     <a href="#">
-                        <img src={img3}></img>
+                        <img src={img3} alt='article_img'></img>
                     </a>
                     <a href="#">
-                        <img src={img4}></img>
+                        <img src={img4} alt='article_img'></img>
                     </a>
                 </div>
                 <a href="#" className='QR_code'>
                     <div className="min_erweima">
-                        <img src={erweima}></img>
+                        <img src={erweima} alt='二维码'></img>
                     </div>
                     <div>
                         <p style={{ fontSize: '15px' }}>下载简书手机app></p>
                         <p className='czou' style={{ color: '#999' }}>随时随地发现和创作内容</p>
                     </div>
                     <div className='show_max_erweima'>
-                        <img src={erweima}></img>
+                        <img src={erweima} alt='大图二维码'></img>
                     </div>
                 </a>
                 <div>
@@ -83,7 +75,7 @@ class FriendBanner extends React.Component {
                         <div style={{ float: 'left' }}>
                             推荐作者
                         </div>
-                        <a href="#" className='refresh_active' style={{ float: 'right', color: '#969696' }} onClick={(e) => (this.onbrush(e))}>
+                        <a href="javascript:;" className='refresh_active' style={{ float: 'right', color: '#969696' }} onClick={(e) => (this.onbrush(e))}>
                             <span className="iconfont icon-shuaxin refresh rotate-donghua-720" ref={(ref) => { this.ele = ref }}></span>
                             <span>换一批</span>
                         </a>
@@ -94,12 +86,12 @@ class FriendBanner extends React.Component {
                                 return (
                                     <div className='author_list_item' key={index}>
                                         <div className='shou'>
-                                            <img src={erweima} ></img>
+                                            <img src={erweima} alt='二维码'></img>
                                         </div>
                                         <div style={{ flex: 1 }}>
-                                            <p className='shou'>{item.author_name}</p>
+                                            <p className='shou'>{item.user_name}</p>
                                             <p style={{ color: '#969696', fontSize: '12px', marginTop: '6px' }}>
-                                                写了{item.wenzi}k字 · {item.fangwen}k喜欢
+                                                写了{0}k字 · {item.guanzhu}k喜欢
                                             </p>
                                         </div>
                                         <div className='shou guangzhu' style={{ color: '#42c02e', fontSize: '13px', alignSelf: 'flex-start', marginTop: '2px' }}>

@@ -10,8 +10,8 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         var num = localStorage.getItem('look_me')
-        var phone = '', pass = '';
-        if (num == 558) {
+        // var phone = '', pass = '';
+        if (num === 558) {
             // phone: ''
             // pass: ''
             //发请求解析 记住密码
@@ -127,7 +127,7 @@ class Login extends React.Component {
             return (
                 <LoginStyle>
                     <div className='user_login_reg'>
-                        <a href='/' className='login_logo'><img src={img}></img></a>
+                        <a href='/' className='login_logo'><img src={img} alt='logo'></img></a>
                         <div className='login_reg'>
                             <div className='login_reg_header'>
                                 <Link to="/login/sign_in" className='login_ active'>登录</Link>
@@ -158,7 +158,7 @@ class Login extends React.Component {
             return (
                 <LoginStyle>
                     <div className='user_login_reg'>
-                        <a href='/' className='login_logo'><img src={img}></img></a>
+                        <a href='/' className='login_logo'><img src={img} alt='logo'></img></a>
                         <div className='login_reg'>
                             <div className='login_reg_header'>
                                 <Link to="/login/sign_in" className='login_ '>登录</Link>
