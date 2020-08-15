@@ -6,6 +6,7 @@ import img from "../../static/421ec96ccef8aea708c84ba2972b5be484695f25.png";
 import img1 from "../../static/f35f847410c2d919aee3f40701e6c2e8d234661e.jpg";
 import { message } from 'antd';
 
+var element = document.createElement('div');
 class Article extends React.Component {
     constructor(props) {
         super(props)
@@ -13,6 +14,7 @@ class Article extends React.Component {
             list: [],
             index: 2
         }
+
         this.articleReq(0);
     }
 
@@ -113,13 +115,23 @@ class Article extends React.Component {
                 <div className='article_list'>
                     {
                         this.state.list.map((item, index) => {
-                            var result = item.content.replace(/<img/g, `<img style="width: 60px;height:60px;float:right;" alt='article_img'`);
+                            var result = item.content.replace(/<img/g, `<img `);
+                            var str1 = result.split('src="')[1];
+                            if (str1) var str2 = str1.split('"')[0];
+                            element.innerHTML = result;
+
+                            var str = element.textContent;
+
+
+                            str = str.slice(0, Math.min(80, str.length)) + "...";
+                            if (str2) { str = `<img style='width: 60px;height:60px;float:right;' src="${str2}" alt='article_img' />` + str }
+
                             return (
                                 <div className='article_list_item' key={index}>
                                     <h2 className='article_list_title'>
-                                        <a href='javascript:;'>{item.title}</a>
+                                        <a href='javascript:;' onClick={(e) => { this.props.history.push('/article/' + item._id) }}>{item.title}</a>
                                     </h2>
-                                    <div className='article_list_content' dangerouslySetInnerHTML={{ __html: result }}>
+                                    <div className='article_list_content' dangerouslySetInnerHTML={{ __html: str }}>
                                     </div>
                                     <div className='article_list_footer'>
                                         <div className='jsd-meta'>

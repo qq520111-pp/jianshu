@@ -119,14 +119,18 @@ animation-fill-mode:forwards;
     color: #ea6f5a!important;
 }
 
+.guanzhu_btn{
+    padding: 2px 12px;
+    font-size: 12px;
+    border-radius: 40px;
+    border: 1px solid #ec7259;   
+    color: #ec7259;
+    background-color: #fff;
+}
 
-
-
-
-
-
-
-
+.article_list_title .shou:hover{
+    text-decoration: underline;
+}
 
 
 

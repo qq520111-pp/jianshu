@@ -80,11 +80,6 @@
     align-items: center;
 }
 
-.guangzhu{
-    position: absolute;
-    right: 0;
-}
-
 .author_list_item img{
     display: block;
     width:48px;

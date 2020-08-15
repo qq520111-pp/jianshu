@@ -8,7 +8,7 @@ class MainContent extends React.Component {
         return (
             <IndexStyle>
                 <div className="container index clearFloat">
-                    <Article></Article>
+                    <Article history={this.props.history}></Article>
                     <FriendBanner></FriendBanner>
                 </div>
             </IndexStyle>

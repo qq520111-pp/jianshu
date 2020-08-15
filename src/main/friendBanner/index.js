@@ -88,8 +88,8 @@ class FriendBanner extends React.Component {
                                         <div className='shou'>
                                             <img src={erweima} alt='二维码'></img>
                                         </div>
-                                        <div style={{ flex: 1 }}>
-                                            <p className='shou'>{item.user_name}</p>
+                                        <div className="article_list_title" style={{ flex: 1, marginTop: "0" }}>
+                                            <p className='shou' >{item.user_name}</p>
                                             <p style={{ color: '#969696', fontSize: '12px', marginTop: '6px' }}>
                                                 写了{0}k字 · {item.guanzhu}k喜欢
                                             </p>

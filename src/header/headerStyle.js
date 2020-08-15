@@ -1,10 +1,16 @@
 import styled from "styled-components";
+import img from "../static/nav-logo-4c7bbafe27adc892f3046e6978459bac.png";
 
-const headerStyle = styled.div`
+const headerStyle = styled.div` 
         .bott-b{
-            box-sizing: border-box;
+            position:fixed;
+            top:0;
+            width:100%;
             height: 56px;
+            background: #fff;
+            box-sizing: border-box;
             border-bottom: 1px solid #f0f0f0;
+            z-index:999;
         }
 
         .header{
@@ -18,7 +24,7 @@ const headerStyle = styled.div`
             float: left;
             width:100px;
             height:56px;
-            background-image: url(../static/nav-logo-4c7bbafe27adc892f3046e6978459bac.png);
+            background-image: url(${img});
             background-size: contain;
         }
 

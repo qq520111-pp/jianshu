@@ -3,6 +3,7 @@ import Login from "../login/index.js";
 import MainContent from "../main/index.js";
 import Footer from "../main/Footer/index.js";
 import CreateArticle from "../createArticle/index.js";
+import ArticleDetail from "../articleDetails/index.js";
 
 const route = [
     {
@@ -29,8 +30,12 @@ const route = [
         component: Login,
         path: '/login/:sign_in',
         exact: true
+    },
+    {
+        component: ArticleDetail,
+        path: '/article/:id',
+        exact: true
     }
-
 ]
 
 export default route

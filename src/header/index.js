@@ -27,6 +27,7 @@ class Header extends React.Component {
 
         return (
             <HeaderStyle>
+                <div style={{ height: "56px" }}></div>
                 <nav className="bott-b navbar">
                     <div className="header">
                         <a className='header-logo' href='/'>

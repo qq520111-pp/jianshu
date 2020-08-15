@@ -15,18 +15,21 @@ app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Headers', "Content-Type");
 
-    // if (req.method === 'OPTIONS') {
-    //     next();
-    // } 
-
-    next();
+    if (req.method === "OPTIONS") {
+        res.status(200).send("OK")
+        //eslint-disable-next-lineno-console   
+        console.log("hasoption")
+    } else {
+        next()
+    }
 })
 
 app.post('/', router.index);
-app.post('/createArticle', router.createArticle)
+app.post('/createArticle', router.createArticle);
+app.post('/articleDetail', router.articleDetail);
 app.post('/register', router.register);
 app.post('/login', router.login);
-app.get('/getAuthor', router.getAuthor)
+app.get('/getAuthor', router.getAuthor);
 
 
 app.listen(8853, function () {

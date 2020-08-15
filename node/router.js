@@ -103,13 +103,17 @@ let createArticle = function (req, res1) {
         _id: params.id
     }).then(res => {
         if (res) {
+            var obj = res[0];
+            delete obj.user_phone;
+            delete obj.user_pass;
+
             article_list.create({
                 title: params.title,
                 content: params.content,
                 fayang: 0,
                 guanzhu: 0,
                 zuanshi: 0,
-                user_msg: res[0],
+                user_msg: obj,
             }).then(res => {
                 res1.send({ msg: '创建成功' });
             })
@@ -135,10 +139,18 @@ let getAuthor = function (req, res1) {
     })
 }
 
+let articleDetail = function (req, res1) {
+    var params = req.body;
+    article_list.find({ _id: params.id }).then(res => {
+        res1.send(res[0]);
+    })
+}
+
 module.exports = {
     index,
     register,
     login,
     createArticle,
-    getAuthor
+    getAuthor,
+    articleDetail
 }
