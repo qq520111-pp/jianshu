@@ -4,6 +4,7 @@ import MainContent from "../main/index.js";
 import Footer from "../main/Footer/index.js";
 import CreateArticle from "../createArticle/index.js";
 import ArticleDetail from "../articleDetails/index.js";
+import HookMy from "../hook/hook.js";
 
 const route = [
     {
@@ -34,6 +35,11 @@ const route = [
     {
         component: ArticleDetail,
         path: '/article/:id',
+        exact: true
+    },
+    {
+        component: HookMy,
+        path: '/hook',
         exact: true
     }
 ]

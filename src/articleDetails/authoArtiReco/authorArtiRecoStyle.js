@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Style = styled.div`
     margin-left:10px;
+    position:relative;
     .article_title{
         font-size: 30px;
         font-weight: 700;
@@ -32,6 +33,12 @@ const Style = styled.div`
 
     .article_list{
         margin:16px 0;
+    }
+
+    .xiding{
+        position:absolute;
+        top:56px;
+        width:100%;
     }
 `
 export default Style

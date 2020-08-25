@@ -31,7 +31,7 @@ class ArticleDetail extends React.Component {
 
     render() {
         return (
-            <div style={{ background: "#f9f9f9", height: "100vh", overflowY: "auto" }}>
+            <div style={{ background: "#f9f9f9", overflowY: "auto" }}>
                 <Header></Header>
                 <ArticleDetails className="container clearFloat">
                     <div className="col-xs-16">
