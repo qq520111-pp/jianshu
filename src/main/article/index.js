@@ -12,10 +12,9 @@ class Article extends React.Component {
         super(props)
         this.state = {
             list: [],
-            index: 2
+            index: 0
         }
 
-        this.articleReq(0);
     }
 
     articleReq(index) {
@@ -26,28 +25,29 @@ class Article extends React.Component {
                 index: index
             }
         }).then(res => {
+            console.log(res);
             if (!res.data.length) {
                 message.error('暂无更多数据!!!')
                 return false
             }
             var arr = this.state.list.concat(res.data);
+            var num = this.state.index + 1;
+
             this.setState({
-                list: arr
+                list: arr,
+                index: num
             })
+            console.log(this.state.list);
+            console.log(num);
         })
     }
 
     addList() {
-        var num = this.state.index;
-
-        this.articleReq(num);
-        num++;
-        this.setState({
-            index: num
-        })
+        this.articleReq(this.state.index);
     }
 
     componentDidMount() {
+        this.articleReq(this.state.index);
         //可以加上你需要的条件等，然后生成Swiper对象，
         //一定要检查是不是每次都生成了Swiper对象，否则可能出现不滑动的情况和别的情况等
         var mySwiper = new Swiper('.swiper-container', {
@@ -86,8 +86,8 @@ class Article extends React.Component {
             var screenHeight = window.innerHeight;
 
             if (chaHeight - screenHeight <= 0) {
-                this.articleReq(1);
                 window.onscroll = null;
+                this.articleReq(this.state.index);
             }
         }
     }
@@ -121,7 +121,6 @@ class Article extends React.Component {
                             element.innerHTML = result;
 
                             var str = element.textContent;
-
 
                             str = str.slice(0, Math.min(80, str.length)) + "...";
                             if (str2) { str = `<img style='width: 60px;height:60px;float:right;' src="${str2}" alt='article_img' />` + str }

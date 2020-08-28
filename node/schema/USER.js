@@ -21,8 +21,8 @@ var user_schema = new mongoose.Schema({
         required: true
     },
     user_article: {
-        type: String,
-        default: '暂无关联'
+        type: Array,
+        default: []
     },
     user_details: {
         type: String,

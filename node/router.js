@@ -24,7 +24,7 @@ let index = function (req, res) {
     // limit((index + 1) * size)
     article_list.find().then(res1 => {
         res1 = res1.reverse();
-        var arr = res1.slice(index * size);
+        var arr = res1.slice(index * size, (index + 1) * size);
         res.send(arr);
     })
 }
@@ -104,8 +104,6 @@ let createArticle = function (req, res1) {
     }).then(res => {
         if (res) {
             var obj = res[0];
-            delete obj.user_phone;
-            delete obj.user_pass;
 
             article_list.create({
                 title: params.title,
@@ -115,6 +113,15 @@ let createArticle = function (req, res1) {
                 zuanshi: 0,
                 user_msg: obj,
             }).then(res => {
+                user.update({ user_phone: obj.user_phone }, {
+                    "$push": {
+                        'user_article': res
+                    }
+                }, { multi: true }, function (err, docs) {
+                    if (err) console.log(err);
+                    console.log('更改成功：' + docs);
+                })
+
                 res1.send({ msg: '创建成功' });
             })
         } else {
@@ -141,8 +148,46 @@ let getAuthor = function (req, res1) {
 
 let articleDetail = function (req, res1) {
     var params = req.body;
-    article_list.find({ _id: params.id }).then(res => {
-        res1.send(res[0]);
+    article_list.find({ _id: params.id }).then(async res => {
+        var resArr = res;
+        var _id = res[0].user_msg._id;
+        // 作者其他文章
+        var recomAuthorArti = null;
+        // 其他作者文章
+        var recomOrderAuthorArti = null;
+
+        try {
+            recomAuthorArti = await new Promise((resolve, rej) => {
+                user.findOne({ _id: _id }).then(res => {
+                    var arr = res.user_article.filter(item => {
+                        return params.id != item._id
+                    })
+                    arr = arr.reverse()
+                    resolve(arr.splice(0, 5));
+                })
+            })
+
+            recomOrderAuthorArti = await new Promise((resolve, rej) => {
+                article_list.find({}).then(res => {
+                    var arr = res.filter(item => {
+                        return params.id != item._id
+                    })
+                    arr = arr.reverse()
+                    resolve(arr.splice(0, 5))
+                })
+            })
+        } catch (e) {
+            console.log(e);
+        }
+
+
+        var obj = {
+            ...resArr[0]._doc,
+            recomAuthorArti,
+            recomOrderAuthorArti
+        }
+
+        res1.send(obj);
     })
 }
 

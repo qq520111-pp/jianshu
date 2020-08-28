@@ -7,14 +7,22 @@ import 'antd/dist/antd.css';
 
 class App extends React.Component {
     constructor(props) {
-        super(props)
-        this.state = store.getState()
+        super(props);
+        this.state = store.getState();
+
+        // change_loading(boo) {
+        //     var action = {
+        //         type: "change_loading",
+        //         value: boo
+        //     }
+        //     dispatch(action);
+        // }
     }
 
     render() {
         return (
             <Provider store={store}>
-                <div className="contain" >
+                <div className="contain">
                     <HashRouter>
                         {routes.map((item, index) => {
                             var exact = item.exact;

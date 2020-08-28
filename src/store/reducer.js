@@ -7,6 +7,7 @@ let obj = {
     user_inif: {
 
     },
+    loading: false
 }
 
 function reducer(state = obj, action) {
@@ -25,6 +26,11 @@ function reducer(state = obj, action) {
     if (action.type === 'change_user_inif') {
         var oldState = JSON.parse(JSON.stringify(state));
         oldState.user_inif = action.value;
+        return oldState
+    }
+    if (action.type === 'change_loading') {
+        var oldState = JSON.parse(JSON.stringify(state));
+        oldState.loading = action.value;
         return oldState
     }
     return obj

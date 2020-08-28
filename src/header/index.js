@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import HeaderStyle from './headerStyle';
 
 class Header extends React.Component {
+    
+
     render() {
         var login = <Link className='header-right header-login' to='/login/sign_in'>登录</Link>;
         var reg = <Link className='header-right header-register' to='/login/sign_up'>注册</Link>;
@@ -24,7 +26,6 @@ class Header extends React.Component {
                 </div>
             </div>
         }
-
         return (
             <HeaderStyle>
                 <div style={{ height: "56px" }}></div>

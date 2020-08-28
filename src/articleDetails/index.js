@@ -12,8 +12,14 @@ class ArticleDetail extends React.Component {
             article: null
         }
     }
+    componentDidUpdate() {
+        // this.req()
+    }
 
     componentDidMount() {
+        this.req()
+    }
+    req() {
         var { id } = this.props.match.params;
         React.http({
             url: "/articleDetail",
@@ -22,7 +28,6 @@ class ArticleDetail extends React.Component {
             },
             method: "POST"
         }).then(res => {
-            console.log(res.data);
             this.setState({
                 article: res.data
             })
@@ -31,14 +36,14 @@ class ArticleDetail extends React.Component {
 
     render() {
         return (
-            <div style={{ background: "#f9f9f9", overflowY: "auto" }}>
+            <div style={{ background: "#f9f9f9", overflowY: "auto", height: '100vh' }}>
                 <Header></Header>
                 <ArticleDetails className="container clearFloat">
                     <div className="col-xs-16">
                         <ArticleContent article={this.state.article}></ArticleContent>
                     </div>
                     <div className="col-xs-7">
-                        <AuthoArtiReco article={this.state.article}></AuthoArtiReco>
+                        <AuthoArtiReco article={this.state.article} history={this.props.history}></AuthoArtiReco>
                     </div>
                 </ArticleDetails>
             </div>

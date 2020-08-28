@@ -47,41 +47,29 @@ class ArticleDetail extends React.Component {
                         </div>
                     </div>
                     <div style={{ margin: "20px 0", background: " #eee", height: "1px" }}></div>
-                    <div className="article_list article_list_title">
-                        <span className="shou">文章标题</span>
-                        <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
-                    </div>
-                    <div className="article_list article_list_title">
-                        <span className="shou">文章标题</span>
-                        <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
-                    </div>
-                    <div className="article_list article_list_title">
-                        <span className="shou">文章标题</span>
-                        <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
-                    </div>
-                    <div className="article_list article_list_title">
-                        <span className="shou">文章标题</span>
-                        <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
-                    </div>
+                    {
+                        this.props.article.recomAuthorArti.map((item, index) => {
+                            return (
+                                <div className="article_list article_list_title  white-space" key={index}>
+                                    <span className="shou" onClick={(e) => { this.props.history.push('/article/' + item._id) }}>{item.title}</span>
+                                    <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
                 <div className={this.state.xiding} ref="xiding">
                     <div className="orter_arti_title">推荐阅读</div>
-                    <div className="article_list article_list_title">
-                        <span className="shou">文章标题</span>
-                        <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
-                    </div>
-                    <div className="article_list article_list_title">
-                        <span className="shou">文章标题</span>
-                        <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
-                    </div>
-                    <div className="article_list article_list_title">
-                        <span className="shou">文章标题</span>
-                        <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
-                    </div>
-                    <div className="article_list article_list_title">
-                        <span className="shou">文章标题</span>
-                        <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
-                    </div>
+                    {
+                        this.props.article.recomOrderAuthorArti.map((item, index) => {
+                            return (
+                                <div className="article_list article_list_title white-space" key={index}>
+                                    <span className="shou" onClick={(e) => { this.props.history.push('/article/' + item._id) }} >{item.title}</span>
+                                    <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </AuthorArtiRecoStyle>
         )
