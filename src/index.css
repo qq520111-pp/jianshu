@@ -7,11 +7,17 @@
     padding-right: 15px;
 }
 
+
 @media (min-width: 992px){
     .container {
         width: 960px;
     }
 
+    .xiding{
+        position:fixed;
+        top:56px;
+        width:262px;
+    }
 }
 
 @media (max-width: 1080px) {
@@ -38,6 +44,12 @@
 
     .QR_code .czou{
         font-size: 12px;
+    }
+
+    .xiding{
+        position:fixed;
+        top:56px;
+        width:200px;
     }
 }
 

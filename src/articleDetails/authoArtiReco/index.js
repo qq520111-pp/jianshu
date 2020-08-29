@@ -1,6 +1,7 @@
 import React from "react";
 import AuthorArtiRecoStyle from "./authorArtiRecoStyle";
-import erweima from "../../static/download-index-side-qrcode-4130a7a6521701c4cb520ee6997d5fdb.png"
+import erweima from "../../static/download-index-side-qrcode-4130a7a6521701c4cb520ee6997d5fdb.png";
+import { Link } from "react-router-dom";
 
 class ArticleDetail extends React.Component {
     constructor(props) {
@@ -13,12 +14,10 @@ class ArticleDetail extends React.Component {
     componentDidMount() {
         var that = this;
         var count = 0;
-
         window.onscroll = function (e) {
-            if (!count) { count = (that.refs.xiding.offsetTop) };
+            if (!count) { count = (that.refs[1].offsetTop) };
             if (window.scrollY - count >= 0) {
                 that.xiding('orter_arti xiding');
-                that.refs.xiding.style.top = (window.scrollY - count + 388) + "px"
             } else {
                 that.xiding('orter_arti');
             }
@@ -51,20 +50,20 @@ class ArticleDetail extends React.Component {
                         this.props.article.recomAuthorArti.map((item, index) => {
                             return (
                                 <div className="article_list article_list_title  white-space" key={index}>
-                                    <span className="shou" onClick={(e) => { this.props.history.push('/article/' + item._id) }}>{item.title}</span>
+                                    <Link to={'/article/' + item._id} className="shou" target="_blank">{item.title}</Link>
                                     <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
                                 </div>
                             )
                         })
                     }
                 </div>
-                <div className={this.state.xiding} ref="xiding">
+                <div className={this.state.xiding} ref={1}>
                     <div className="orter_arti_title">推荐阅读</div>
                     {
                         this.props.article.recomOrderAuthorArti.map((item, index) => {
                             return (
                                 <div className="article_list article_list_title white-space" key={index}>
-                                    <span className="shou" onClick={(e) => { this.props.history.push('/article/' + item._id) }} >{item.title}</span>
+                                    <Link to={'/article/' + item._id} className="shou" target="_blank">{item.title}</Link>
                                     <div style={{ fontSize: "12px", color: " #969696", marginTop: "2px" }}>阅读9948</div>
                                 </div>
                             )

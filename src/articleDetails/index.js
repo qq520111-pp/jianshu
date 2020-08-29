@@ -12,9 +12,6 @@ class ArticleDetail extends React.Component {
             article: null
         }
     }
-    componentDidUpdate() {
-        // this.req()
-    }
 
     componentDidMount() {
         this.req()
@@ -36,7 +33,7 @@ class ArticleDetail extends React.Component {
 
     render() {
         return (
-            <div style={{ background: "#f9f9f9", overflowY: "auto", height: '100vh' }}>
+            <div style={{ background: "#f9f9f9", paddingBottom: '30px' }}>
                 <Header></Header>
                 <ArticleDetails className="container clearFloat">
                     <div className="col-xs-16">

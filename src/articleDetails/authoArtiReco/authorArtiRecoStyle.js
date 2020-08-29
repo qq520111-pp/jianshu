@@ -35,10 +35,5 @@ const Style = styled.div`
         margin:16px 0;
     }
 
-    .xiding{
-        position:absolute;
-        top:56px;
-        width:100%;
-    }
 `
 export default Style
